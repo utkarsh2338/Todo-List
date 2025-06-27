@@ -1,0 +1,182 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Root & Theming */
+:root {
+  --bg-start: #3b82f6;
+  --bg-mid: #60a5fa;
+  --bg-end: #a5b4fc;
+  --card: #ffffff;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --accent: #3b82f6;
+  --accent-hover: #2563eb;
+  --shadow: rgba(0, 0, 0, 0.1);
+  --transition: 0.3s ease;
+  --font-sans: 'Inter', sans-serif;
+  --font-heading: 'Poppins', sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-start: #111827;
+    --bg-mid: #1e293b;
+    --bg-end: #334155;
+    --card: #1f2937;
+    --text: #f3f4f6;
+    --muted: #9ca3af;
+    --accent: #60a5fa;
+    --accent-hover: #3b82f6;
+    --shadow: rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* Global Styles */
+* {
+  box-sizing: border-box;
+  transition: var(--transition);
+}
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background: linear-gradient(135deg, var(--bg-start), var(--bg-mid), var(--bg-end));
+  background-size: 600% 600%;
+  animation: gradientBG 20s ease infinite;
+  color: var(--text);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 2rem;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.container {
+  background: var(--card);
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px var(--shadow);
+  width: 100%;
+  max-width: 450px;
+  padding: 2rem;
+  animation: fadeIn 0.5s var(--transition);
+}
+
+h1 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 2.25rem;
+  letter-spacing: 1px;
+}
+
+/* Input & Button */
+.input-group {
+  display: flex;
+  margin-bottom: 1.5rem;
+}
+input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--muted);
+  border-right: none;
+  border-radius: 0.75rem 0 0 0.75rem;
+  font-size: 1rem;
+  background: var(--card);
+  color: var(--text);
+  font-family: var(--font-sans);
+}
+input::placeholder {
+  color: var(--muted);
+  opacity: 0.7;
+}
+input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}
+button {
+  padding: 0.75rem 1.25rem;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 0 0.75rem 0.75rem 0;
+  font-size: 1rem;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 2px 6px var(--shadow);
+}
+button:hover {
+  background: var(--accent-hover);
+  box-shadow: 0 4px 12px var(--shadow);
+}
+
+/* Task List */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--card);
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.75rem;
+  box-shadow: 0 2px 6px var(--shadow);
+  transition: var(--transition);
+  animation: slideIn 0.4s var(--transition);
+}
+li:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--shadow);
+}
+li.completed span {
+  text-decoration: line-through;
+  color: var(--muted);
+}
+
+/* Checkbox & Text */
+li input[type="checkbox"] {
+  margin-right: 0.75rem;
+  width: 1.2rem;
+  height: 1.2rem;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+li span {
+  flex: 1;
+  font-size: 1rem;
+  word-break: break-word;
+  font-family: var(--font-sans);
+}
+
+/* Delete Button */
+li button {
+  background: transparent;
+  font-size: 1.25rem;
+  color: var(--muted);
+}
+li button:hover {
+  color: #ef4444;
+  transform: scale(1.1);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes slideIn {
+  from { transform: translateY(10px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
